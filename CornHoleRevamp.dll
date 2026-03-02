@@ -1,0 +1,30 @@
+# Build the app using the .NET SDK image
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+# Copy the .csproj file and restore dependencies (optimizes caching)
+COPY CornHoleRevamp.csproj ./
+RUN dotnet restore
+
+# Copy the rest of the source code and publish the app
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Stage 2: Create a runtime image (smaller, no SDK)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+
+# Copy the published output from the build stage
+COPY --from=build /app/out ./
+
+# Expose the port your app listens on (default for ASP.NET Core is 80/HTTP, 443/HTTPS)
+EXPOSE 80
+EXPOSE 443
+
+# Set environment variables if needed (e.g., for production mode)
+ENV ASPNETCORE_ENVIRONMENT=Production
+# If using HTTPS locally in Docker, uncomment and ensure certs are handled (Render manages external HTTPS)
+# ENV ASPNETCORE_URLS="https://+:443;http://+:80"
+
+# Run the app
+ENTRYPOINT ["dotnet", "CornHoleRevamp.dll"]
