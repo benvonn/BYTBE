@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CornHoleRevamp.Controllers
 {
-    // Remove [Authorize] from here
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
