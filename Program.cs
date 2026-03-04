@@ -34,26 +34,6 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var context = services.GetRequiredService<AppDbContext>();
-        // This creates/updates tables automatically
-        await context.Database.MigrateAsync();
-        Console.WriteLine("✅ Database migrations applied successfully.");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"❌ Migration error: {ex.Message}");
-        Console.WriteLine($"❌ Stack trace: {ex.StackTrace}");
-        // Re-throw to crash the app so you know migration failed
-        throw;
-    }
-}
-// 🔥 END AUTO-MIGRATION 🔥
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -63,6 +43,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// IMPORTANT: UseCors must be before UseRouting
+
 
 app.UseRouting();
 app.UseSession();

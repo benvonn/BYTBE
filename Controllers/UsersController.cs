@@ -1,5 +1,4 @@
 ﻿using CornHoleRevamp.Data;
-using CornHoleRevamp.Migrations;
 using CornHoleRevamp.Models;
 using CornHoleRevamp.Service;
 using Microsoft.AspNetCore.Http;
