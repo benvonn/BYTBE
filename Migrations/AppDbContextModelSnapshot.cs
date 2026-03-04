@@ -30,10 +30,6 @@ namespace CornHoleRevamp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BoardType")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("PlayedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -167,11 +163,6 @@ namespace CornHoleRevamp.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Board")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("text")
-                        .HasDefaultValue("");
 
                     b.Property<string>("Name")
                         .IsRequired()

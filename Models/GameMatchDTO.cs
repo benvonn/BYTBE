@@ -10,9 +10,6 @@ namespace CornHoleRevamp.Models
         [JsonPropertyName("totalRounds")]
         public int TotalRounds { get; set; }
 
-        [JsonPropertyName("board")]
-        public string Board { get; set; } = string.Empty;
-
         [JsonPropertyName("winner")]
         public string Winner { get; set; } = string.Empty;
 

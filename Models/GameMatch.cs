@@ -12,7 +12,6 @@
         public int? WinnerId { get; set; }
         public string WinnerName { get; set; } = string.Empty;   // From frontend winner
         public DateTime PlayedAt { get; set; }
-        public string BoardType { get; set; } = string.Empty;    // From frontend board
         public int TotalRounds { get; set; }      // From frontend totalRounds
 
         // Navigation properties

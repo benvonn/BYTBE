@@ -105,7 +105,6 @@ namespace CornHoleRevamp.Controllers
             {
                 id = user.Id,
                 name = user.Name,
-                board = user.Board,
                 offlineToken
             });
         }
@@ -119,7 +118,6 @@ namespace CornHoleRevamp.Controllers
             {
                 Name = request.Name,
                 PasswordHash = _passwordServices.HashPassword(request.Passcode),
-                Board = "pro"
             };
 
             _context.Users.Add(user);
@@ -127,35 +125,7 @@ namespace CornHoleRevamp.Controllers
 
             var token = _config["Jwt:Key"];
             var offlineToken = GenerateJwtToken(user);
-            return CreatedAtAction("GetUser", new { id = user.Id }, new { id = user.Id, name = user.Name, board = "pro", offlineToken });
-        }
-        // PUT: api/Users/5/board
-        [HttpPut("{id}/board")]
-        public async Task<IActionResult> UpdateBoard(int id, [FromBody] UpdateBoardDto request)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            user.Board = request.Board;
-            await _context.SaveChangesAsync();
-
-            return Ok(new { id = user.Id, name = user.Name, board = user.Board });
-        }
-
-        [HttpGet("{id}/board/home")]
-        public async Task<ActionResult<object>> GetBoard(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return Ok(new { board = user.Board });
+            return CreatedAtAction("GetUser", new { id = user.Id }, new { id = user.Id, name = user.Name, offlineToken });
         }
     }
 }
-
-        // PUT: api/Users/

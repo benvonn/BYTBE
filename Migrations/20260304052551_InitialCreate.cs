@@ -20,8 +20,7 @@ namespace CornHoleRevamp.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
-                    OfflineTokenExpiry = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    Board = table.Column<string>(type: "text", nullable: true, defaultValue: "")
+                    OfflineTokenExpiry = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +42,6 @@ namespace CornHoleRevamp.Migrations
                     WinnerId = table.Column<int>(type: "integer", nullable: true),
                     WinnerName = table.Column<string>(type: "text", nullable: false),
                     PlayedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    BoardType = table.Column<string>(type: "text", nullable: false),
                     TotalRounds = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

@@ -87,7 +87,6 @@ namespace CornHoleRevamp.Controllers
                         Player2Name = gameDto.Player2.Name,  // Set from DTO
                         Player1Score = gameDto.Player1.Score,  // Set from DTO
                         Player2Score = gameDto.Player2.Score,  // Set from DTO
-                        BoardType = gameDto.Board,
                         TotalRounds = gameDto.TotalRounds,
                         PlayedAt = playedAt,
                         WinnerName = gameDto.Winner,  // Set from DTO
@@ -151,7 +150,6 @@ namespace CornHoleRevamp.Controllers
                     Player2Score = g.Player2Score,
                     WinnerName = g.WinnerName,
                     PlayedAt = g.PlayedAt,
-                    BoardType = g.BoardType,
                     TotalRounds = g.TotalRounds,
                     Rounds = g.Rounds.Select(r => new RoundDataDto
                     {
@@ -202,7 +200,6 @@ namespace CornHoleRevamp.Controllers
                 Player2Score = g.Player2Score,
                 WinnerName = g.WinnerName,
                 PlayedAt = g.PlayedAt,
-                BoardType = g.BoardType,
                 TotalRounds = g.TotalRounds,
                 Rounds = g.Rounds.Select(r => new RoundDataDto
                 {
@@ -241,7 +238,6 @@ namespace CornHoleRevamp.Controllers
                 Player2Score = g.Player2Score,
                 WinnerName = g.WinnerName,
                 PlayedAt = g.PlayedAt,
-                BoardType = g.BoardType,
                 TotalRounds = g.TotalRounds,
                 Rounds = g.Rounds.Select(r => new RoundDataDto
                 {

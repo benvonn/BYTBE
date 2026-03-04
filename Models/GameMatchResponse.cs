@@ -11,7 +11,6 @@
         public int Player2Score { get; set; }
         public string WinnerName { get; set; } = string.Empty;
         public DateTime PlayedAt { get; set; }
-        public string BoardType { get; set; } = string.Empty;
         public int TotalRounds { get; set; }
         public List<RoundDataDto> Rounds { get; set; } = new List<RoundDataDto>();
     }

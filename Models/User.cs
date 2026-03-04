@@ -12,6 +12,5 @@ namespace CornHoleRevamp.Models
         public string PasswordHash { get; set; }
 
         public DateTime? OfflineTokenExpiry { get; set; }
-        public string? Board { get; set; }
     }
 }

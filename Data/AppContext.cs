@@ -14,9 +14,6 @@ namespace CornHoleRevamp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .Property(u => u.Board)
-                .HasDefaultValue("");
 
             // Stats relationship
             modelBuilder.Entity<Stats>()
